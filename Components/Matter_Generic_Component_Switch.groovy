@@ -31,6 +31,8 @@ metadata {
         //capability 'Health Check'       // Commands:[ping]
 
         //attribute 'healthStatus', 'enum', ['unknown', 'offline', 'online']
+
+        attribute 'currentPosition', 'string'
     }
 }
 
@@ -71,7 +73,12 @@ void parse(List<Map> description) {
             sendEvent(d)
         }
     }
+    runIn(3, "delaySend")
 }
+
+def delaySend(){
+    if (txtEnable) log.info "currentPosition : 00"
+    sendEvent(name: "currentPosition", value: "00")}
 
 // Component command to turn device on
 void on() {
