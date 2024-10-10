@@ -25,8 +25,7 @@ import groovy.transform.Field
 
 metadata {
     definition(name: 'Matter Generic Component Event', namespace: 'kkossev', author: 'Krassimir Kossev', importUrl: '') {
-        //capability 'Actuator'
-        //capability 'Switch'             // Commands:[off, on, refresh]
+
         capability 'Refresh'
         capability "PushableButton"
         //capability 'Health Check'       // Commands:[ping]
@@ -87,19 +86,7 @@ def delaySend(){
 void push(bn = 1) {
     log.warn "Button not pushable"
 }
-/*
-// Component command to turn device on
-     void on() {
-    if (logEnable) { log.debug "${device.displayName} turning on ..." }
-    parent?.componentOn(device)
-}
 
-// Component command to turn device off
-void off() {
-    if (logEnable) { log.debug "${device.displayName} turning off ..." }
-    parent?.componentOff(device)
-}
-*/
 // Component command to ping the device
 void ping() {
     parent?.componentPing(device)
